@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="p-4">Clientes</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr class="table-warning text-center">
+      <th>Nombre</th>
+      <th>Teléfono</th>
+      <th>Email</th>
+      <th>Número de Mascotas</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @clients.each do |client| %>
+      <tr>
+        <td><%= client.name %></td>
+        <td><%= client.phone %></td>
+        <td><%= client.email %></td>
+        <td><%= client.owned_pets %></td>
+        <td><%= link_to 'Más Info', client %></td>
+        <td><%= link_to 'Editar', edit_client_path(client) %></td>
+        <td><%= link_to 'Borrar', client, method: :delete, data: { confirm: 'Elimina cliente?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'Regresar', pages_index_path, class: "btn btn-warning mx-2" %>
+<%= link_to 'Nuevo Cliente', new_client_path, class: "btn btn-info mx-2" %>
